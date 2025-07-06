@@ -1,9 +1,17 @@
-name: CheckVersion
+name: CheckXcodeVersion
+
 on:
   workflow_dispatch:
+
 jobs:
-  build:
+  check-xcode:
     runs-on: macos-latest
+
     steps:
-      - name: Show available Xcode versions
-        run: ls /Applications | grep Xcode
+      - name: Check if Xcode 16.4 is installed
+        run: |
+          if [ -d "/Applications/Xcode_16.4.app" ]; then
+            echo "✅ Xcode 16.4 is installed"
+          else
+            echo "❌ Xcode 16.4 is NOT installed"
+          fi

@@ -1,0 +1,24 @@
+name: BuildProject
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_18.2.app
+
+      - name: Build the app (SPM)
+        run: |
+          xcodebuild clean build \
+            -scheme githubActions \
+            -project githubActions.xcodeproj \ # или -workspace если есть
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2' \
+            ONLY_ACTIVE_ARCH=NO CODE_SIGNING_ALLOWED=NO

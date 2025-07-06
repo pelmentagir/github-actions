@@ -8,10 +8,5 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Check if Xcode 16.4 is installed
-        run: |
-          if [ -d "/Applications/Xcode_16.4.app" ]; then
-            echo "✅ Xcode 16.4 is installed"
-          else
-            echo "❌ Xcode 16.4 is NOT installed"
-          fi
+      - name: List available simulators
+        run: xcrun simctl list devices | grep -E 'iPhone|iOS'

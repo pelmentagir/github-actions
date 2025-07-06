@@ -1,0 +1,12 @@
+name: CheckXcodeVersion
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-xcode:
+    runs-on: macos-latest
+
+    steps:
+      - name: List available simulators
+        run: xcrun simctl list devices | grep -E 'iPhone|iOS'

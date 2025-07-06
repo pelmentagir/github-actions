@@ -1,0 +1,9 @@
+name: CheckVersion
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Show available Xcode versions
+        run: ls /Applications | grep Xcode

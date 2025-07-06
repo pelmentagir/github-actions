@@ -19,6 +19,5 @@ jobs:
           xcodebuild clean build \
             -scheme githubActions \
             -project githubActions/githubActions.xcodeproj \
-            -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2' \
             ONLY_ACTIVE_ARCH=NO CODE_SIGNING_ALLOWED=NO
